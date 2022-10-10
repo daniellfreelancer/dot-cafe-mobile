@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
+
+import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Welcome from './src/components/Welcome';
+import Drawer from './src/navigation/Drawer';
+// import 'react-native-gesture-handler';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Punto Café - Android Mobile!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+    <NavigationContainer >
+      <SafeAreaView style={{
+          height:"100%"
+        }}>
+       <Drawer />
+      </SafeAreaView>
+
+        
+
+      
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
