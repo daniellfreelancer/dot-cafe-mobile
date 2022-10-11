@@ -18,22 +18,16 @@ export default function SignIn({ navigation }) {
             }}>
             <View style={{
                 width: "100%",
-                height: 1000,
+                height: 760,
 
             }}>
                 <KeyboardAvoidingView behavior="padding" style={styles.keyboard}>
                     <ScrollView>
                         <View style={styles.container}>
-                        <Image source={{
+                        <Image style={styles.photo} source={{
                             uri: "http://drive.google.com/uc?export=view&id=1wnHo20gsFBF0XRF6DFNDJ6FIwsqwb1IX"
                         }}
-                            style={{
-                                width: "50%",
-                                height: 210,
-                                justifyContent: 'center',
-                                alignItems: "center",
-                                marginBottom: 30,
-                            }} />
+                            />
                             <View style={styles.login}>
                                 <Text style={styles.title}>INICIAR SESIÓN</Text>
                                 <View>
@@ -73,7 +67,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
     }, 
     input: {
-        width: 350,
+        width: 320,
         textAlign: 'center',
         marginTop: 50,
         marginBottom: 10,
@@ -124,5 +118,13 @@ const styles = StyleSheet.create({
         fontWeight: '800',
         borderBottomColor: '#377771',
         borderBottomWidth: 2,
+    },
+    photo:{
+        width: 200,
+        height: 200,
+        justifyContent: 'center',
+        alignItems: "center",
+        marginBottom: 30,
+        marginTop:-100,
     },
 })
