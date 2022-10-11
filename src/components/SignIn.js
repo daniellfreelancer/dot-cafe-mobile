@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, KeyboardAvoidingView, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native'
+import { View, Text, ImageBackground, KeyboardAvoidingView, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import React from 'react'
 
 export default function SignIn({ navigation }) {
@@ -18,7 +18,7 @@ export default function SignIn({ navigation }) {
             }}>
             <View style={{
                 width: "100%",
-                height: 760,
+                height: 1000,
 
             }}>
                 <KeyboardAvoidingView behavior="padding" style={styles.keyboard}>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 2, height: 4 },
         shadowOpacity: 0.5,
         shadowRadius: 3,
-    },
+    }, 
     input: {
         width: 350,
         textAlign: 'center',
