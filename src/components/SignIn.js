@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, KeyboardAvoidingView, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { View, Text, ImageBackground, KeyboardAvoidingView, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 import React from 'react'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -21,24 +21,34 @@ export default function SignIn({ navigation }) {
     const handleSubmit = e => {
         e.preventDefault()
         let newUserData = {
-            mail: email.trim().toLowerCase(),
-            password: pass.trim()
+            email: email.trim().toLowerCase(),
+            password: pass.trim(),
+            from: "form"
         }
+        login(newUserData)
     }
 
         async function login(newUserData) {
+
+
+
+
             try {
                 let res = await loginUser(newUserData)
                 if (res.data.success) {
                     let data = res.data.response.user
                     dispatch(setCredentials(data))
-                    dispatch(setMessage({
-                        message: `Bienvenido ${data.firstName} ${data.lastName}`,
-                        success: res.data?.success
-                    }))
-                    dispatch(reload())
+                    Alert.alert(`Bienvenido ${data.firstName} ${data.lastName}`)
+                    // dispatch(setMessage({
+                    //     message: `Bienvenido ${data.firstName} ${data.lastName}`,
+                    //     success: res.data?.success
+                    // }))
+                    // dispatch(reload())
                     AsyncStorage.setItem('token', res.data.response.token)
-                    navigate("HomeScreen", { replace: true })
+                    setTimeout(() => {
+                        navigation.navigate("Inicio")
+                    }, 1500);
+                    
                 }
             } catch (error) {
                 console.log(error)
