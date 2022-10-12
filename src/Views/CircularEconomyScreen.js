@@ -5,8 +5,8 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 export default function CircularEconomyScreen({navigation}) {
   return (
-    <ScrollView>
+
         <CircularEconomy navigation={navigation}/>
-    </ScrollView>
+
   )
 }
