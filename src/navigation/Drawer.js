@@ -7,6 +7,7 @@ import SignUpScreen from '../Views/SignUpScreen'
 import CoffeeByKg from '../Views/CoffeeByKg'
 import MyCartScreen from '../Views/MyCartScreen'
 import CircularEconomyScreen from '../Views/CircularEconomyScreen'
+import AboutUsScreen from '../Views/AboutUsScreen'
 
 
 const DrawerNav = createDrawerNavigator()
@@ -20,6 +21,7 @@ export default function Drawer() {
         <DrawerNav.Screen name="Granel"  component={CoffeeByKg}/>
         <DrawerNav.Screen name="Carrito"  component={MyCartScreen}/>
         <DrawerNav.Screen name="Economia Circular"  component={CircularEconomyScreen}/>
+        <DrawerNav.Screen name="Sobre Nosotros"  component={AboutUsScreen}/>
     </DrawerNav.Navigator>
   )
 }
