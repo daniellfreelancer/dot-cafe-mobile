@@ -62,7 +62,7 @@ export default function BasketCart({ navigation }) {
                             <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Total: AR$ {totalPrice}</Text>
                             <Pressable onPress={handleRemoveAll} style={styles.cartBuy}>
                                 <Text style={{ color: '#faffd8', fontWeight: 'bold', fontSize: 20, }}>
-                                    Vacias Carrito
+                                    Vaciar Carrito
                                 </Text>
                             </Pressable>
                             <Pressable style={styles.cartBuy} onPress={()=>handleAddToCart(data)}>
