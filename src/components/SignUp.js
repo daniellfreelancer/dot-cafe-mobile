@@ -1,7 +1,46 @@
-import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, ScrollView, Image } from 'react-native'
+import { View, Text, ImageBackground, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, ScrollView, Image, Pressable, Alert } from 'react-native'
 import React from 'react'
+import { useState } from 'react'
+import { useUserSignupMutation } from '../features/usersAPI'
+import { useNavigation } from '@react-navigation/native'
 
 export default function SignUp() {
+    const navigation = useNavigation()
+
+    const [firstName, setName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [photo, setPhoto] = useState("")
+    const [userSignup] = useUserSignupMutation()
+
+    const handleSignUp = async (e) => {
+        e.preventDefault()
+        let newUserData = {
+            firstName: firstName.trim(),
+            lastName: lastName.trim(),
+            email: email.trim().toLowerCase(),
+            password: password,
+            photo: photo.trim(),
+            from: "form",
+            role: 'user'
+        }
+        userSignup(newUserData)
+            .then(response => {
+                if (response.error) {
+                    Alert.alert('Error al crear usuario')
+                } else {
+                    Alert.alert('Usuario creado, verifica tu cuenta')
+                    setTimeout(() => {
+                        navigation.navigate('Ingresar')
+                    }, 1500)
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     return (
         <ImageBackground
             source={{
@@ -21,40 +60,40 @@ export default function SignUp() {
 
             }}>
                 <>
-        <KeyboardAvoidingView behavior="padding" style={styles.keyboard}>
-            <ScrollView>
-                <View style={styles.container}>
-            <Image style={styles.photo} source={{
-                            uri: "http://drive.google.com/uc?export=view&id=1wnHo20gsFBF0XRF6DFNDJ6FIwsqwb1IX"
-                        }} />
-                    <View style={styles.signup}>
-                        <Text style={styles.title}>REGISTRARSE</Text>
-                        <View>
-                            <Text style={styles.titleInput}>Nombre:</Text>
-                            <TextInput type="text" placeholder="ej Maria" style={[styles.input, styles.inputText]} />
-                        </View>
-                        <View>
-                            <Text style={styles.titleInput}>Apellido:</Text>
-                            <TextInput type="text" placeholder="ej Lopez" style={[styles.input, styles.inputText]} />
-                        </View>
-                        <View>
-                            <Text style={styles.titleInput}>Foto:</Text>
-                            <TextInput type="text" placeholder="Debe ser URL" style={[styles.input, styles.inputText]} />
-                        </View>
-                        <View>
-                            <Text style={styles.titleInput}>Email:</Text>
-                            <TextInput type="email" placeholder="marialopez@gmail.com" style={[styles.input, styles.inputText]} />
-                        </View>
-                        <View>
-                            <Text style={styles.titleInput}>Contraseña:</Text>
-                            <TextInput secureTextEntry={true} placeholder="Contraseña" style={[styles.input, styles.inputText]} />
-                        </View>
-                        <TouchableOpacity style={styles.botton}><Text style={styles.h3}>REGISTRAR</Text></TouchableOpacity>
-                    </View>
-                </View>
-            </ScrollView>
-            </KeyboardAvoidingView>
-        </>
+                    <KeyboardAvoidingView behavior="padding" style={styles.keyboard}>
+                        <ScrollView>
+                            <View style={styles.container}>
+                                <Image style={styles.photo} source={{
+                                    uri: "http://drive.google.com/uc?export=view&id=1wnHo20gsFBF0XRF6DFNDJ6FIwsqwb1IX"
+                                }} />
+                                <View style={styles.signup}>
+                                    <Text style={styles.title}>REGISTRARSE</Text>
+                                    <View>
+                                        <Text style={styles.titleInput}>Nombre:</Text>
+                                        <TextInput type="text" placeholder="ej Maria" style={[styles.input, styles.inputText]} onChangeText={(text) => setName(text)} />
+                                    </View>
+                                    <View>
+                                        <Text style={styles.titleInput}>Apellido:</Text>
+                                        <TextInput type="text" placeholder="ej Lopez" style={[styles.input, styles.inputText]} onChangeText={(text) => setLastName(text)} />
+                                    </View>
+                                    <View>
+                                        <Text style={styles.titleInput}>Foto:</Text>
+                                        <TextInput type="text" placeholder="Debe ser URL" style={[styles.input, styles.inputText]} onChangeText={(text) => setPhoto(text)} />
+                                    </View>
+                                    <View>
+                                        <Text style={styles.titleInput}>Email:</Text>
+                                        <TextInput type="email" placeholder="marialopez@gmail.com" style={[styles.input, styles.inputText]} onChangeText={(text) => setEmail(text)} />
+                                    </View>
+                                    <View>
+                                        <Text style={styles.titleInput}>Contraseña:</Text>
+                                        <TextInput type="password" secureTextEntry={true} placeholder="Contraseña" style={[styles.input, styles.inputText]} onChangeText={(text) => setPassword(text)} />
+                                    </View>
+                                    <Pressable style={styles.botton} onPress={handleSignUp}><Text style={styles.h3}>REGISTRAR</Text></Pressable>
+                                </View>
+                            </View>
+                        </ScrollView>
+                    </KeyboardAvoidingView>
+                </>
             </View>
         </ImageBackground>
     )
@@ -133,12 +172,12 @@ const styles = StyleSheet.create({
         borderBottomColor: '#377771',
         borderBottomWidth: 2,
     },
-    photo:{
-            width: 200,
-            height: 200,
-            justifyContent: 'center',
-            alignItems: "center",
-            marginBottom: 30,
-            marginTop:30,
+    photo: {
+        width: 200,
+        height: 200,
+        justifyContent: 'center',
+        alignItems: "center",
+        marginBottom: 30,
+        marginTop: 30,
     },
 })
