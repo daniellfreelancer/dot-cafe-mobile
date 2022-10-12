@@ -13,7 +13,7 @@ const store = configureStore({
         [coffeeByKiloAPI.reducerPath]: coffeeByKiloAPI.reducer,
         [usersAPI.reducerPath] : usersAPI.reducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(coffeeByKiloAPI.middleware ),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(coffeeByKiloAPI.middleware, usersAPI.middleware ),
 
 
 
