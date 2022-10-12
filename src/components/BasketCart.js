@@ -1,9 +1,19 @@
-import { View, Text, StyleSheet, Image, ImageBackground, } from 'react-native'
-import React from 'react'
-import { useSelector } from 'react-redux';
+import { View, Text, StyleSheet, Image, ImageBackground, Button } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import { emptyItem , emptyCart} from '../features/cartSlice';
 
-export default function BasketCart({navigation}) {
+export default function BasketCart({ navigation }) {
+    const dispatch = useDispatch();
+    const [show, setShow] = useState(false);
+    const handleShow = () => setShow(true);
+    const handleRemove = (id) =>{
+        dispatch(emptyItem(id));
+        };
+    const handleRemoveAll = () => {
+        dispatch(emptyCart());
+    }
 
     const myBasket = useSelector((state) => state.cart.cartArray);
     let totalQuantity = 0;
@@ -15,7 +25,7 @@ export default function BasketCart({navigation}) {
         });
         return { totalPrice, totalQuantity };
     };
-        return (
+    return (
         <View style={styles.cartEmpty}>
             <Image style={{ margin: 20, width: 60, height: 60, display: 'flex', alignSelf: 'center' }} source={{
                 uri: "https://cdn-icons-png.flaticon.com/512/8070/8070478.png"
@@ -34,22 +44,29 @@ export default function BasketCart({navigation}) {
                                         <Text style={{ marginHorizontal: 5 }}>{item.name}</Text>
                                         <Text style={{ marginHorizontal: 5 }}>{item.quantity} U.</Text>
                                         <Text style={{ marginHorizontal: 8, fontWeight: 'bold' }} >AR$ {item.quantity * item.price}</Text>
-                                        <View style={styles.cartDelete}>
-                                            <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/7666/7666109.png" }}
+                                        <View show={show} style={styles.cartDelete}>
+                                            <Pressable  onPress={() => handleRemove(item._id)}>
+                                                <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/7666/7666109.png" }}
                                                 style={{
                                                     width: 20, height: 20,
                                                 }}
                                             />
+                                            </Pressable>
                                         </View>
                                     </View>
                                 )
                             })
                         }
                         < View style={styles.cartText}>
-                            <Text style={{ fontWeight: 'bold', marginTop: 50, marginBottom: 20, }} >Cantidad de productos en el carrito:  {getTotal().totalQuantity} U.</Text>
-                            <Text>Total: AR$ {totalPrice}</Text>
-                            <Pressable style={styles.cartBuy}>
-                                <Text style={{ color: '#faffd8', fontWeight: 'bold', fontSize: 20 }}>Finalizar Compra</Text>
+                            <Text style={{ fontWeight: 'bold', marginTop: 50, marginBottom: 20, fontSize: 16 }} >Cantidad de productos en el carrito:  {getTotal().totalQuantity} U.</Text>
+                            <Text style={{ fontWeight: 'bold', fontSize: 20 }}>Total: AR$ {totalPrice}</Text>
+                            <Pressable onPress={handleRemoveAll} style={styles.cartBuy}>
+                                <Text style={{ color: '#faffd8', fontWeight: 'bold', fontSize: 20, }}>
+                                    Vacias Carrito
+                                </Text>
+                            </Pressable>
+                            <Pressable style={styles.cartBuy} onPress={()=>handleAddToCart(data)}>
+                                <Text style={{ color: '#faffd8', fontWeight: 'bold', fontSize: 20, }}>Finalizar Compra</Text>
                             </Pressable>
                         </View>
                     </>
@@ -63,7 +80,7 @@ export default function BasketCart({navigation}) {
                 )
             }
         </View >
-        )
+    )
 }
 
 const styles = StyleSheet.create({
@@ -87,7 +104,8 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     cartBuy: {
-        marginTop: 50,
+        marginTop: 15,
+        marginBottom: 20,
         display: 'flex',
         padding: 10,
         backgroundColor: '#204D48',
