@@ -7,6 +7,7 @@ export default function CoffeeByKgProducts({ navigation }) {
     const [coffeKg, setCoffeKg] = useState(1000)
     const [coffe500, setCoffe500] = useState(500)
     const [coffe250, setCoffe250] = useState(250)
+    
     const [showKilo, setShowKilo] = useState()
     const [show500, setShow500] = useState()
     const [show250, setShow250] = useState()
