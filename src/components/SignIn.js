@@ -1,7 +1,7 @@
 import { View, Text, ImageBackground, KeyboardAvoidingView, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import React from 'react'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+//import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useDispatch } from "react-redux";
 import { useUserLoginMutation } from "../features/usersAPI";
 import { useNavigation } from '@react-navigation/native';
