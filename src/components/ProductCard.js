@@ -32,10 +32,8 @@ export default function ProductCard({ data }) {
                 </Pressable>
             </View>
         </>
-
     )
 }
-
 
 const styles = StyleSheet.create({
     buttonLeft: {
