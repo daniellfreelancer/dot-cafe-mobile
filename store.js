@@ -4,20 +4,22 @@ import coffeeByKiloAPI from "./src/features/coffeeByKiloAPI";
 import cartReducer from './src/features/cartSlice'
 import usersAPI from './src/features/usersAPI'
 import userReducer from './src/features/usersSlice'
+import filtersAPI from "./src/features/filtersAPI";
+import mugsAPI from "./src/features/mugsAPI";
+import giftCardsAPI from "./src/features/giftCardsAPI";
 
 const store = configureStore({
-
-
     reducer: {
         cart: cartReducer,
         [coffeeByKiloAPI.reducerPath]: coffeeByKiloAPI.reducer,
         [usersAPI.reducerPath]: usersAPI.reducer,
+        [filtersAPI.reducerPath]: filtersAPI.reducer,
+        [mugsAPI.reducerPath]: mugsAPI.reducer,
+        [giftCardsAPI.reducerPath]: giftCardsAPI.reducer,
     },
 
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(coffeeByKiloAPI.middleware, usersAPI.middleware ),
-
-
-
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(coffeeByKiloAPI.middleware, usersAPI.middleware, filtersAPI.middleware,
+        mugsAPI.middleware, giftCardsAPI.middleware)
 
 })
 

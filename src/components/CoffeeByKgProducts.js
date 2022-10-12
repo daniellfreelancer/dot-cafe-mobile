@@ -11,7 +11,6 @@ export default function CoffeeByKgProducts({ navigation }) {
     const [show500, setShow500] = useState()
     const [show250, setShow250] = useState()
 
-
     const { data: coffeesbykilo } = useGetCoffeeByWeightQuery(coffeKg)
     const { data: coffeesby500 } = useGetCoffeeByWeightQuery(coffe500)
     const { data: coffeesby250 } = useGetCoffeeByWeightQuery(coffe250)
@@ -24,7 +23,6 @@ export default function CoffeeByKgProducts({ navigation }) {
         setShowKilo(true)
         setShow500(false)
         setShow250(false)
-
     }
     const handle500gram = () => {
         setShowKilo(false)
@@ -36,7 +34,6 @@ export default function CoffeeByKgProducts({ navigation }) {
         setShow500(false)
         setShow250(true)
     }
-
 
     return (
         <ImageBackground
@@ -75,14 +72,9 @@ export default function CoffeeByKgProducts({ navigation }) {
             <View>
                 { show250 &&  <Text>Café por 250 Grs</Text> && bag250?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
             </View>
-
-
-
-
         </ImageBackground>
     )
 }
-
 
 const styles = StyleSheet.create({
     buttonKG: {
@@ -101,5 +93,4 @@ const styles = StyleSheet.create({
       letterSpacing: 0.25,
       color: '#faffd8',
     },
-
-  });
+});

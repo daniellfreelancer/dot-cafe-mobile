@@ -1,12 +1,12 @@
 import { View } from 'react-native'
 import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
-import CoffeeByKgProducts from '../components/CoffeeByKgProducts'
+import GiftCardsProducts from '../components/GiftCardProducts'
 
-export default function CoffeeByKg({navigation}) {
+export default function GiftCards({navigation}) {
   return (
     <ScrollView>
-        <CoffeeByKgProducts navigation={navigation}/>
+        <GiftCardsProducts navigation={navigation}/>
     </ScrollView>
   )
 }
