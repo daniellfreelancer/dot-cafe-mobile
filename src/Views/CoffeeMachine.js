@@ -8,6 +8,6 @@ export default function CoffeeMachine({navigation}) {
   return (
     <ScrollView>
        <CoffeeMachineProducts navigation={navigation}/>    
-       </ScrollView>
+    </ScrollView>
   )
 }

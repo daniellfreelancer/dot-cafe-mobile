@@ -37,31 +37,31 @@ export default function ProductCard({ data }) {
 
 const styles = StyleSheet.create({
     buttonLeft: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: 12,
-      paddingHorizontal: 32,
-      margin:"5%",
-      borderRadius: 4,
-      backgroundColor: '#204d48',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        margin:"5%",
+        borderRadius: 4,
+        backgroundColor: '#204d48',
     },
     textLeft: {
-      fontSize: 16,
-      lineHeight: 21,
-      fontWeight: 'bold',
-      letterSpacing: 0.25,
-      color: '#faffd8',
+        fontSize: 16,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: '#faffd8',
     },
     cardContainer:{
-    width: "100%",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    borderRadius: 15,
-    margin: "2%",
-    paddingTop: "2%"
+        width: "100%",
+        alignItems: "center",
+        backgroundColor: "#fff",
+        borderRadius: 15,
+        margin: "2%",
+        paddingTop: "2%"
     },
     imgProduct:{
-        width: 150,
+        width: 200,
         height: 150
     },
     title:{

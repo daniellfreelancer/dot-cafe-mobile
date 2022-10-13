@@ -70,19 +70,19 @@ export default function SignUp() {
                                     <Text style={styles.title}>REGISTRARSE</Text>
                                     <View>
                                         <Text style={styles.titleInput}>Nombre:</Text>
-                                        <TextInput type="text" placeholder="ej Maria" style={[styles.input, styles.inputText]} onChangeText={(text) => setName(text)} />
+                                        <TextInput type="text" placeholder="ej Maria" style={[styles.input, styles.inputText]} onChangeText={(text) => setName(text.trim())} />
                                     </View>
                                     <View>
                                         <Text style={styles.titleInput}>Apellido:</Text>
-                                        <TextInput type="text" placeholder="ej Lopez" style={[styles.input, styles.inputText]} onChangeText={(text) => setLastName(text)} />
+                                        <TextInput type="text" placeholder="ej Lopez" style={[styles.input, styles.inputText]} onChangeText={(text) => setLastName(text.trim())} />
                                     </View>
                                     <View>
                                         <Text style={styles.titleInput}>Foto:</Text>
-                                        <TextInput type="text" placeholder="Debe ser URL" style={[styles.input, styles.inputText]} onChangeText={(text) => setPhoto(text)} />
+                                        <TextInput type="text" placeholder="Debe ser URL" style={[styles.input, styles.inputText]} onChangeText={(text) => setPhoto(text.trim())} />
                                     </View>
                                     <View>
                                         <Text style={styles.titleInput}>Email:</Text>
-                                        <TextInput type="email" placeholder="marialopez@gmail.com" style={[styles.input, styles.inputText]} onChangeText={(text) => setEmail(text)} />
+                                        <TextInput type="email" placeholder="marialopez@gmail.com" style={[styles.input, styles.inputText]} onChangeText={(text) => setEmail(text.trim())} />
                                     </View>
                                     <View>
                                         <Text style={styles.titleInput}>Contraseña:</Text>
