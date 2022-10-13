@@ -40,19 +40,14 @@ export default function AccesoriesProducts({ navigation }) {
                     justifyContent: 'space-around',
                     marginBottom:22
                 }}>
-                    <Pressable style={({ pressed }) => [
-                        {
-                            backgroundColor: pressed ? 'rgb(210, 230, 255)' : 'white',
-                        },
-          styles.buttonProd,
-        ]} onPress={handleFilters} >
-                        <Text style={styles.textProd}> Filtros</Text>
-                    </Pressable>
-                    <Pressable style={styles.buttonProd} onPress={handleMugs}>
-                        <Text style={styles.textProd}> Tazas</Text>
-                    </Pressable>
-                </View>
-
+                <Pressable style={({ pressed }) => [{backgroundColor: pressed ? 'rgb(210, 230, 255)' : 'white'},
+                    styles.buttonProd, ]} onPress={handleFilters} >
+                    <Text style={styles.textProd}> Filtros</Text>
+                </Pressable>
+                <Pressable style={styles.buttonProd} onPress={handleMugs}>
+                    <Text style={styles.textProd}> Tazas</Text>
+                </Pressable>
+            </View>
             <View>    
                 { showFilters && filters &&
                     <>

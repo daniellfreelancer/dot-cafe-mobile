@@ -1,10 +1,10 @@
 import { View, Text, ImageBackground, Button, StyleSheet, Pressable } from 'react-native'
 import React, { useState } from 'react'
-import ProductCard from './ProductCard'
-import { useGetAllGiftCardsQuery } from '../features/giftCardsAPI'
+import { useGetAllCoffeeForDrinkQuery } from '../features/coffeeForDrinkAPI'
+import CoffeeCard from './CoffeeCard'
 
-export default function GiftCardsProducts({ navigation }) {
-    const { data: giftcards } = useGetAllGiftCardsQuery()
+export default function CoffeeDrinkProducts({ navigation }) {
+    const { data: coffees } = useGetAllCoffeeForDrinkQuery()
 
     return (
         <ImageBackground
@@ -24,18 +24,20 @@ export default function GiftCardsProducts({ navigation }) {
                     marginBottom:22
                 }}>
                     <View style={styles.buttonProd} >
-                        <Text style={styles.textProd}>Gift Cards</Text>
+                        <Text style={styles.textProd}>Pedí tu .Café</Text>
                     </View>
                 </View>
-
-            <View>    
-                {giftcards?.response.map(gc => <ProductCard data={gc} key={gc._id} />)}
+            <View style={styles.coffeesContainer}>    
+                {coffees?.response.map(cup => <CoffeeCard data={cup} key={cup._id} />)}
             </View>
         </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
+    coffeesContainer:{
+        flexDirection: 'column'
+    },
     buttonProd: {
       alignItems: 'center',
       justifyContent: 'center',

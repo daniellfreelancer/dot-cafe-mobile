@@ -65,13 +65,25 @@ export default function CoffeeByKgProducts({ navigation }) {
                 </View>
 
             <View>
-                { showKilo &&  <Text>Café por Kilo</Text> && bag1Kg?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
+                { showKilo && bag1Kg &&
+                    <>
+                        {bag1Kg.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
+                    </>
+                }
             </View>
             <View>
-                { show500 &&  <Text>Café por 500 Grs</Text> && bag500?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
+                { show500 &&  bag500 && 
+                    <>
+                        {bag500?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
+                    </>
+                }
             </View>
             <View>
-                { show250 &&  <Text>Café por 250 Grs</Text> && bag250?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
+                { show250 &&  bag250 &&
+                    <>
+                        {bag250?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
+                    </>
+                }
             </View>
         </ImageBackground>
     )
