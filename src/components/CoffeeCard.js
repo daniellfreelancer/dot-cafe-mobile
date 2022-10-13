@@ -3,29 +3,30 @@ import SelectDropdown from 'react-native-select-dropdown'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../features/cartSlice'
+import { color } from 'react-native-reanimated'
 
 export default function CoffeeCard({ data }) {
 
-    const cups = [{label: "tu taza", value: data.pricePerCup}, {label: "taza eco", value: data.pricePerMug}]
+    const cups = [{ label: "tu taza", value: data.pricePerCup }, { label: "taza eco", value: data.pricePerMug }]
     const [price, setPrice] = useState()
 
     const dispatch = useDispatch()
 
-    const handleAddToCart =  async (data) =>{
+    const handleAddToCart = async (data) => {
         dispatch(addToCart({
             _id: data._id,
             photo: data.photo,
             price: price,
             name: data.name ? data.name : `${data.type} - ${data.size}`
         }))
-        Alert.alert( "Agregado al carrito")
+        Alert.alert("Agregado al carrito")
     }
 
     return (
         <>
             <View style={styles.cardContainer}>
                 <View style={styles.column1}>
-                    <Image style={styles.imgProduct} source={ { uri: data?.photo}} alt="imgItem" />
+                    <Image style={styles.imgProduct} source={{ uri: data?.photo }} alt="imgItem" />
                     <View styles={styles.titleCoffee}>
                         <Text style={styles.description}>{data?.size}</Text>
                         <Text style={styles.description}>{data?.description}</Text>
@@ -44,9 +45,9 @@ export default function CoffeeCard({ data }) {
                 </View>
                 <View style={styles.btnsContainer}>
                     <View style={styles.selectContainer}>
-                        <SelectDropdown style={styles.selectDrop} data={cups} onSelect={(selectedItem) => {
-                                setPrice(selectedItem.value)
-                            }}
+                        <SelectDropdown defaultButtonText={'Elegí'} rowTextStyle={{fontSize:10}} buttonStyle={styles.selectDrop}  data={cups} onSelect={(selectedItem) => {
+                            setPrice(selectedItem.value)
+                        }}
                             buttonTextAfterSelection={(selectedItem, index) => {
                                 return `${selectedItem.label} - $${selectedItem.value}`
                             }}
@@ -55,7 +56,7 @@ export default function CoffeeCard({ data }) {
                             }}
                         />
                     </View>
-                    <Pressable style={styles.btnAdd} onPress={()=>handleAddToCart(data)} > 
+                    <Pressable style={styles.btnAdd} onPress={() => handleAddToCart(data)} >
                         <Text style={styles.textBtnAdd}>+</Text>
                     </Pressable>
                 </View>
@@ -65,22 +66,25 @@ export default function CoffeeCard({ data }) {
 }
 
 const styles = StyleSheet.create({
-    cardContainer:{
+    buttonTextAfterSelection: {
+        backgroundColor: 'red',
+    },
+    cardContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: "95%",
+        width: "90%",
         alignItems: "center",
         backgroundColor: "#fff",
         borderRadius: 12,
         marginVertical: 4,
-        paddingVertical: 5
+        paddingVertical: 5,
     },
-    column1:{
+    column1: {
         flexDirection: 'column',
         alignItems: 'center',
         width: '35%',
     },
-    titleCoffee:{
+    titleCoffee: {
         flexDirection: 'column',
         alignItems: 'center'
     },
@@ -90,16 +94,16 @@ const styles = StyleSheet.create({
         color: 'black',
         textAlign: 'center'
     },
-    column2:{
+    column2: {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'flex-start',
         width: '38%',
     },
-    details:{
+    details: {
         flexDirection: 'row'
     },
-    imgProduct:{
+    imgProduct: {
         width: 60,
         height: 60
     },
@@ -119,36 +123,29 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     selectContainer: {
-        backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
+        flexDirection: 'row',
+        position: 'relative',
+        bottom: 10,
     },
     selectDrop: {
-        width: '50%',
-        backgroundColor: '#204d48',
+        color: 'white',
+        borderRadius: 8,
+        height: 32,
+        width: 95,
+        backgroundColor: '#a3bbad',
     },
     btnAdd: {
-        width: 20,
+        width: 35,
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 5,
-        borderRadius: 1,
+        borderRadius: 4,
         backgroundColor: '#204d48',
     },
     textBtnAdd: {
-        fontSize: 11,
-        lineHeight: 15,
-        fontWeight: 'bold',
+        fontSize: 15,
         color: '#faffd8',
     },
-    
-    // title:{
-    //     color: "black"
-    // },
-    // presentation :{
-    //     color: "black"
-    // },
-    // price:{
-    //     color: "black"
-    // }
-  });
+});
