@@ -13,6 +13,7 @@ import AboutUsScreen from '../Views/AboutUsScreen'
 import CoffeeMachine from '../Views/CoffeeMachine'
 import CoffeeDrink from '../Views/CoffeeDrink'
 import MyAccount from '../Views/MyAccount'
+import Success from '../Views/Success'
 import { useSelector } from 'react-redux'
 
 const DrawerNav = createDrawerNavigator()
@@ -41,6 +42,7 @@ export default function Drawer() {
         <DrawerNav.Screen name="Gift Cards" component={GiftCards}/>
         <DrawerNav.Screen name="Economia Circular" component={CircularEconomyScreen}/>
         <DrawerNav.Screen name="Sobre Nosotros" component={AboutUsScreen}/>
+        <DrawerNav.Screen name="Success" component={Success}/>
     </DrawerNav.Navigator>
   )
 }

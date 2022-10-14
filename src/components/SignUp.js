@@ -57,7 +57,6 @@ export default function SignUp() {
             <View style={{
                 width: "100%",
                 height: 760,
-
             }}>
                 <>
                     <KeyboardAvoidingView behavior="padding" style={styles.keyboard}>

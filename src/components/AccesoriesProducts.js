@@ -55,6 +55,7 @@ export default function AccesoriesProducts({ navigation }) {
             <View>
                 {showFilters && filters &&
                     <>
+                        <Text style={{paddingVertical:5, borderRadius: 4, backgroundColor: '#faffd887', textAlign: 'center', marginBottom: 20, fontWeight: 'bold' }}>FILTROS DE CAFE</Text>
                         {filters?.allFilters.map(filter => <ProductCard data={filter} key={filter._id} />)}
                     </>
                 }
@@ -62,6 +63,7 @@ export default function AccesoriesProducts({ navigation }) {
             <View>
                 {showMugs && mugs &&
                     <>
+                        <Text style={{paddingVertical:5, borderRadius: 4, backgroundColor: '#faffd887', textAlign: 'center', marginBottom: 20, fontWeight: 'bold' }}>TAZAS</Text>
                         {mugs?.response.map(mug => <ProductCard data={mug} key={mug._id} />)}
                     </>
                 }

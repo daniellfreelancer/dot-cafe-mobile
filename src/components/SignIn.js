@@ -25,7 +25,7 @@ export default function SignIn({ navigation }) {
         login(newUserData)
     }
 
-    async function login(newUserData) { 
+    async function login(newUserData) {
         try {
             let res = await loginUser(newUserData)
             if (res.data.success) {
@@ -41,7 +41,6 @@ export default function SignIn({ navigation }) {
                 setTimeout(() => {
                     navigation.navigate("Inicio")
                 }, 1500);
-                
             }
         } catch (error) {
             console.log(error)
@@ -64,7 +63,6 @@ export default function SignIn({ navigation }) {
             <View style={{
                 width: "100%",
                 height: 760,
-
             }}>
                 <KeyboardAvoidingView behavior="padding" style={styles.keyboard}>
                     <ScrollView>
@@ -172,5 +170,5 @@ const styles = StyleSheet.create({
         marginBottom: 30,
         marginTop: -100,
     },
-    
+
 })

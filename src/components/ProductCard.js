@@ -5,29 +5,29 @@ import { addToCart } from '../features/cartSlice'
 
 export default function ProductCard({ data }) {
 
-    const imgProduct = typeof(data?.photo) == "string" ? data.photo : data.photo[0]
+    const imgProduct = typeof (data?.photo) == "string" ? data.photo : data.photo[0]
 
     const dispatch = useDispatch()
 
-    const handleAddToCart =  async (data) =>{
+    const handleAddToCart = async (data) => {
         dispatch(addToCart({
             _id: data._id,
             photo: imgProduct,
             price: data.price,
-            name:data.name
+            name: data.name
         }))
-        Alert.alert( "Agregado al carrito")
+        Alert.alert("Agregado al carrito")
     }
 
     return (
         <>
             <View style={styles.cardContainer}  >
-                <Image style={styles.imgProduct}  source={ { uri: imgProduct}} alt="imgItem" />
-                <Text style={styles.title} >{ data.name && <Text>{data?.name}</Text> }</Text>
+                <Image style={styles.imgProduct} source={{ uri: imgProduct }} alt="imgItem" />
+                <Text style={styles.title} >{data.name && <Text>{data?.name}</Text>}</Text>
                 <Text style={styles.presentation} >{data?.presentation} {data?.roastingLevels}</Text>
                 <Text style={styles.price} >precio: ${data?.price}</Text>
-                <Text style={styles.price} >{ data?.weight ? `Peso: ${data?.weight} Grs` : null } </Text>
-                <Pressable style={styles.buttonLeft} onPress={()=>handleAddToCart(data)} > 
+                <Text style={styles.price} >{data?.weight ? `Peso: ${data?.weight} Grs` : null} </Text>
+                <Pressable style={styles.buttonLeft} onPress={() => handleAddToCart(data)} >
                     <Text style={styles.textLeft}> AGREGAR AL CARRITO</Text>
                 </Pressable>
             </View>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingVertical: 12,
         paddingHorizontal: 32,
-        margin:"5%",
+        margin: "5%",
         borderRadius: 4,
         backgroundColor: '#204d48',
     },
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         letterSpacing: 0.25,
         color: '#faffd8',
     },
-    cardContainer:{
+    cardContainer: {
         width: "100%",
         alignItems: "center",
         backgroundColor: "#fff",
@@ -60,17 +60,17 @@ const styles = StyleSheet.create({
         margin: "2%",
         paddingTop: "2%"
     },
-    imgProduct:{
+    imgProduct: {
         width: 200,
-        height: 150
+        height: 150,
     },
-    title:{
+    title: {
         color: "black"
     },
-    presentation :{
-        color: "black"
+    presentation: {
+        color: "black",
     },
-    price:{
+    price: {
         color: "black"
     }
-  });
+});

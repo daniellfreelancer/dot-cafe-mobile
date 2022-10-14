@@ -1,8 +1,8 @@
-import { ImageBackground, Image, View, Button, StyleSheet, Pressable, Text  } from 'react-native'
+import { ImageBackground, Image, View, Button, StyleSheet, Pressable, Text } from 'react-native'
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 
-export default function Welcome({navigation}) {
+export default function Welcome({ navigation }) {
     return (
         <>
             <ImageBackground
@@ -17,7 +17,6 @@ export default function Welcome({navigation}) {
                     width: "100%",
                     height: "100%"
                 }}
-
             >
                 <Image
                     source={{
@@ -33,18 +32,15 @@ export default function Welcome({navigation}) {
                 <View style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between',
-                    marginBottom:22
+                    marginBottom: 22
                 }}>
-                <Pressable style={styles.buttonLeft} onPress={() => navigation.navigate('Registro')} >
+                    <Pressable style={styles.buttonLeft} onPress={() => navigation.navigate('Registro')} >
                         <Text style={styles.textLeft}> REGISTRARSE</Text>
                     </Pressable>
                     <Pressable style={styles.buttonRight} onPress={() => navigation.navigate('Ingresar')}>
                         <Text style={styles.textRight}> INICIAR SESIÓN</Text>
                     </Pressable>
                 </View>
-
-
-
                 <StatusBar style="auto" backgroundColor="#204d48" />
             </ImageBackground>
         </>
@@ -53,29 +49,29 @@ export default function Welcome({navigation}) {
 
 const styles = StyleSheet.create({
     buttonLeft: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: 12,
-      paddingHorizontal: 32,
-      margin:"5%",
-      borderRadius: 4,
-      backgroundColor: '#204d48',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        margin: "5%",
+        borderRadius: 4,
+        backgroundColor: '#204d48',
     },
     buttonRight: {
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 12,
         paddingHorizontal: 32,
-        margin:"5%",
+        margin: "5%",
         borderRadius: 4,
         backgroundColor: '#faffd8',
-      },
+    },
     textLeft: {
-      fontSize: 16,
-      lineHeight: 21,
-      fontWeight: 'bold',
-      letterSpacing: 0.25,
-      color: '#faffd8',
+        fontSize: 16,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: '#faffd8',
     },
     textRight: {
         fontSize: 16,
@@ -83,5 +79,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: '#204d48',
-      },
-  });
+    },
+});
