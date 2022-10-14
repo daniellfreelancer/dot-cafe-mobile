@@ -1,11 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
+import MyOrder from '../components/MyOrder'
 
-export default function MyAccount({navigation}) {
+export default function MyOrderScreen({navigation, route}) {
   return (
     <ScrollView>
-        <Text>Mi cuenta</Text>
+        <MyOrder navigation={navigation} route={route}/>
     </ScrollView>
   )
 }

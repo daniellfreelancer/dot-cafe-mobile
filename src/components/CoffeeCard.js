@@ -141,14 +141,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#faffd8',
     },
-    
-    // title:{
-    //     color: "black"
-    // },
-    // presentation :{
-    //     color: "black"
-    // },
-    // price:{
-    //     color: "black"
-    // }
-  });
+});

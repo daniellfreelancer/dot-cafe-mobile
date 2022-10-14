@@ -35,7 +35,7 @@ export default function Welcome({navigation}) {
                     justifyContent: 'space-between',
                     marginBottom:22
                 }}>
-                <Pressable style={styles.buttonLeft} onPress={() => navigation.navigate('Registro')} >
+                    <Pressable style={styles.buttonLeft} onPress={() => navigation.navigate('Registro')} >
                         <Text style={styles.textLeft}> REGISTRARSE</Text>
                     </Pressable>
                     <Pressable style={styles.buttonRight} onPress={() => navigation.navigate('Ingresar')}>
