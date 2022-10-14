@@ -41,7 +41,7 @@ export default function BasketCart({ navigation }) {
                                             style={{
                                                 width: 60, height: 60, marginVertical: 8
                                             }} />
-                                        <Text style={{ marginHorizontal: 5 }}>{item.name}</Text>
+                                        <Text style={{ marginHorizontal: 5 }}>{item.name.slice(0,15)}..</Text>
                                         <Text style={{ marginHorizontal: 5 }}>{item.quantity} U.</Text>
                                         <Text style={{ marginHorizontal: 8, fontWeight: 'bold' }} >AR$ {item.quantity * item.price}</Text>
                                         <View show={show} style={styles.cartDelete}>
@@ -65,7 +65,7 @@ export default function BasketCart({ navigation }) {
                                     Vaciar Carrito
                                 </Text>
                             </Pressable>
-                            <Pressable style={styles.cartBuy} onPress={()=>handleAddToCart(data)}>
+                            <Pressable style={styles.cartBuy} onPress={()=> navigation.navigate('Success')}>
                                 <Text style={{ color: '#faffd8', fontWeight: 'bold', fontSize: 20, }}>Finalizar Compra</Text>
                             </Pressable>
                         </View>
@@ -73,7 +73,7 @@ export default function BasketCart({ navigation }) {
                 ) : (
                     <View style={styles.cartText}>
                         <Text>El carrito esta vacio</Text>
-                        <Pressable style={styles.cartBuy} onPress={() => navigation.navigate('Granel')}>
+                        <Pressable style={styles.cartBuy} onPress={() => navigation.navigate('Maquinas')}>
                             <Text style={{ color: '#faffd8', fontWeight: 'bold', fontSize: 20 }}>Todos los productos</Text>
                         </Pressable>
                     </View>
@@ -92,12 +92,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         borderBottomWidth: .5,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        
     },
     cartText: {
         width: '100%',
         display: 'flex',
         alignItems: 'center',
+        
     },
     cartEmpty: {
         width: '100%',

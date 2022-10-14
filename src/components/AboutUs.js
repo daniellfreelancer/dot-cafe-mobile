@@ -28,7 +28,6 @@ export default function AboutUs() {
                                 <Text style={styles.textCard}>Desde 1933 tostamos nuestro propio café. Lo cuidamos desde la selección de sus granos, hasta la taza, conservando el amor y el respeto que tenemos por lo que hacemos, desde el primer día. Por eso nuestro café es ÚNICO. A través de nuestro proceso exclusivo de tostación, logramos resaltar las notas y características propias de los diferentes granos. Un aroma pleno y un sabor con cuerpo, con un toque de frescura, es lo que hace inconfundible a un .Cafe, siempre..</Text>
                             </View>
                         </View>
-
                         <View style={styles.cardContainer1}>
                             <View style={styles.photoContainer}>
                                 <Image style={styles.photo1} source={{ uri: "http://drive.google.com/uc?export=view&id=1wYF3aRbaOg5OOgSPnUkdvRmjqWY4Xi-u" }} />

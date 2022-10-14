@@ -34,29 +34,6 @@ export default function SignIn({ navigation }) {
         })
     }
 
-    async function login(newUserData) { 
-        try {
-            // let res = await loginUser(newUserData)
-            // if (res.data.success) {
-            //     let data = res.data.response.user
-            //     dispatch(setCredentials(data))
-            //     Alert.alert(`Bienvenido ${data.firstName} ${data.lastName}`)
-            //     // dispatch(setMessage({
-            //     //     message: `Bienvenido ${data.firstName} ${data.lastName}`,
-            //     //     success: res.data?.success
-            //     // }))
-            //     // dispatch(reload())
-            //     AsyncStorage.setItem('token', res.data.response.token)
-            //     setTimeout(() => {
-            //         navigation.navigate("Inicio")
-            //     }, 1500);
-                
-            // }
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     return (
         <ImageBackground
             source={{
@@ -73,7 +50,6 @@ export default function SignIn({ navigation }) {
             <View style={{
                 width: "100%",
                 height: 760,
-
             }}>
                 <KeyboardAvoidingView behavior="padding" style={styles.keyboard}>
                     <ScrollView>
@@ -181,5 +157,5 @@ const styles = StyleSheet.create({
         marginBottom: 30,
         marginTop: -100,
     },
-    
+
 })

@@ -12,7 +12,7 @@ export default function coffeeMachineProducts() {
   const { data: baristaMachine } = useGetTypeCoffeeMachinesQuery("barista")
   const { data: filtroMachine } = useGetTypeCoffeeMachinesQuery("filtro")
 
-  
+
   const machineCapsule = capsulaMachine?.cofMachine
   const machineItalian = italianaMachine?.cofMachine
   const machineBar = baristaMachine?.cofMachine
@@ -55,53 +55,62 @@ export default function coffeeMachineProducts() {
   return (
 
     <>
-    <ImageBackground
-          source={{
-            uri: "http://drive.google.com/uc?export=view&id=1Y5Qi1FBbvBcmAam2-HB3IN5haf1BJXe4"
+      <ImageBackground
+        source={{
+          uri: "https://img.freepik.com/foto-gratis/vista-cercana-granos-cafe-tostados-frescos-oscuros-sobre-fondo-granos-cafe_141793-27283.jpg?w=1380&t=st=1665691697~exp=1665692297~hmac=fd5c9898d2cfc7049b744904006b5fbb7a1e1b02a937b648840fb06f08387576"
         }}
         resizeMode="cover"
         style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%"
+          flex: 1,
+          alignItems: "center",
+          height: "100%"
         }} >
         <View style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                marginBottom:22,
-                padding: "2%"
-            }}>
-            <Pressable style={myStyles.buttonKG} onPress={handleCapsule} >
-              <Text style={myStyles.textKG}>Capsula</Text>
-            </Pressable>
-
-            <Pressable style={myStyles.buttonKG} onPress={handleItalian}>
-              <Text style={myStyles.textKG}>Italiana</Text>
-            </Pressable>
-
-            <Pressable style={myStyles.buttonKG} onPress={handleBar}>
-              <Text style={myStyles.textKG}> Barista</Text>
-            </Pressable>
-
-            <Pressable style={myStyles.buttonKG} onPress={handleFilter}>
-              <Text style={myStyles.textKG}> Con filtro</Text>
-            </Pressable>
-            </View>
-
-            <View>
-              {showCapsule &&  machineCapsule?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
-            </View>
-              <View>
-              {showItalian && machineItalian?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
-              </View>
-              <View>
-              {showBar &&  machineBar?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
-              </View>
-              <View>
-              {showFilter &&  machinefilter?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
-              </View>
-    </ImageBackground>
+          flexDirection: 'row',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          marginBottom: 22,
+          padding: "2%"
+        }}>
+          <Pressable style={({ pressed }) => [
+            { backgroundColor: pressed ? "#45230ffd" : "#204d48" }, myStyles.buttonKG
+          ]}
+            onPress={handleCapsule} >
+            <Text style={myStyles.textKG}>Capsula</Text>
+          </Pressable>
+          <Pressable style={({ pressed }) => [
+            { backgroundColor: pressed ? "#45230ffd" : "#204d48" }, myStyles.buttonKG
+          ]}
+            onPress={handleItalian}>
+            <Text style={myStyles.textKG}>Italiana</Text>
+          </Pressable>
+          <Pressable style={({ pressed }) => [
+            { backgroundColor: pressed ? "#45230ffd" : "#204d48" }, myStyles.buttonKG
+          ]}
+            onPress={handleBar}>
+            <Text style={myStyles.textKG}> Barista</Text>
+          </Pressable>
+          <Pressable style={({ pressed }) => [
+            { backgroundColor: pressed ? "#45230ffd" : "#204d48" }, myStyles.buttonKG
+          ]}
+            onPress={handleFilter}>
+            <Text style={myStyles.textKG}> Con filtro</Text>
+          </Pressable>
+        </View>
+        <View>
+          {showCapsule && machineCapsule?.map(coffee => 
+          <ProductCard data={coffee} key={coffee._id} />)}
+        </View>
+        <View>
+          {showItalian && machineItalian?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
+        </View>
+        <View>
+          {showBar && machineBar?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
+        </View>
+        <View>
+          {showFilter && machinefilter?.map(coffee => <ProductCard data={coffee} key={coffee._id} />)}
+        </View>
+      </ImageBackground>
     </>
 
   )
@@ -114,9 +123,8 @@ const myStyles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 12,
     paddingHorizontal: 32,
-    margin:"2%",
+    margin: "2%",
     borderRadius: 4,
-    backgroundColor: '#204d48',
   },
   textKG: {
     fontSize: 16,
