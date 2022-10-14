@@ -1,10 +1,12 @@
 import { ImageBackground, Image, View, Button, StyleSheet, Pressable, Text } from 'react-native'
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
+import { useSelector } from 'react-redux'
 
 export default function Welcome({ navigation }) {
+    const user = useSelector(state => state.auth.user)
+
     return (
-        <>
             <ImageBackground
                 source={{
                     uri: "http://drive.google.com/uc?export=view&id=1gxxNlSqQtQyETsRn43uon6Uhn_WzIBc5"
@@ -15,7 +17,7 @@ export default function Welcome({ navigation }) {
                     justifyContent: "center",
                     alignItems: "center",
                     width: "100%",
-                    height: "100%"
+                    height: 800
                 }}
             >
                 <Image
@@ -34,16 +36,20 @@ export default function Welcome({ navigation }) {
                     justifyContent: 'space-between',
                     marginBottom: 22
                 }}>
-                    <Pressable style={styles.buttonLeft} onPress={() => navigation.navigate('Registro')} >
-                        <Text style={styles.textLeft}> REGISTRARSE</Text>
-                    </Pressable>
-                    <Pressable style={styles.buttonRight} onPress={() => navigation.navigate('Ingresar')}>
-                        <Text style={styles.textRight}> INICIAR SESIÓN</Text>
-                    </Pressable>
+                    {
+                        !user &&
+                        <>
+                            <Pressable style={styles.buttonLeft} onPress={() => navigation.navigate('Registro')} >
+                                <Text style={styles.textLeft}> REGISTRARSE</Text>
+                            </Pressable>
+                            <Pressable style={styles.buttonRight} onPress={() => navigation.navigate('Ingresar')}>
+                                <Text style={styles.textRight}> INICIAR SESIÓN</Text>
+                            </Pressable>
+                        </>
+                    }
                 </View>
                 <StatusBar style="auto" backgroundColor="#204d48" />
             </ImageBackground>
-        </>
     )
 }
 
