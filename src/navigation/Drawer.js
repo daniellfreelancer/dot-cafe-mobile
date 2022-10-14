@@ -59,7 +59,7 @@ export default function Drawer() {
     .then(response => {
         AsyncStorage.removeItem('token')
         dispatch(deleteCredentials())
-        navigation.navigate('Home')
+        navigation.navigate('Inicio')
     })
     .catch(error =>
         console.log(error))

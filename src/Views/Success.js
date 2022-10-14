@@ -16,7 +16,7 @@ const Success = () => {
                 }} >
                 <Text style={{ padding: 7,width: '100%',textAlign:'center',backgroundColor:'rgba(0, 0, 0, .65)',color: 'white', fontWeight: 'bold', fontSize: 23, marginTop: 100 }}>¡ Su compra se realizo con éxito !</Text>
                 <Image style={{ marginTop: 150,margin: 20, width: 200, height: 200, display: 'flex', alignSelf: 'center' }} source={{
-                    uri: "http://drive.google.com/uc?export=view&id=1pUHWzQ0_R4F7sJ3chwq4TWKBz6MRlMaa"
+                    uri: "http://drive.google.com/uc?export=view&id=1YmObHpv_DwcQLxrfdEGisOIS75SDluO0"
                 }} />
             </ImageBackground>
         </>
