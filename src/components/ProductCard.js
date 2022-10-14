@@ -21,13 +21,13 @@ export default function ProductCard({ data }) {
 
     return (
         <>
-            <View style={styles.cardContainer}  >
+            <View style={styles.cardContainer}>
                 <Image style={styles.imgProduct}  source={ { uri: imgProduct}} alt="imgItem" />
                 <Text style={styles.title} >{ data.name && <Text>{data?.name}</Text> }</Text>
                 <Text style={styles.presentation} >{data?.presentation} {data?.roastingLevels}</Text>
                 <Text style={styles.price} >precio: ${data?.price}</Text>
                 <Text style={styles.price} >{ data?.weight ? `Peso: ${data?.weight} Grs` : null } </Text>
-                <Pressable style={styles.buttonLeft} onPress={()=>handleAddToCart(data)} > 
+                <Pressable style={styles.buttonLeft} onPress={()=>handleAddToCart(data)}> 
                     <Text style={styles.textLeft}> AGREGAR AL CARRITO</Text>
                 </Pressable>
             </View>

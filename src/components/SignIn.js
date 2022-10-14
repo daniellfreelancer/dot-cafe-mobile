@@ -1,6 +1,6 @@
 import { View, Text, ImageBackground, KeyboardAvoidingView, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 import React from 'react'
-//import AsyncStorage from '@react-native-async-storage/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useDispatch } from "react-redux";
 import { useUserLoginMutation } from "../features/usersAPI";
 import { useNavigation } from '@react-navigation/native';
@@ -15,34 +15,43 @@ export default function SignIn({ navigation }) {
     const [email, setEmail] = useState("")
     const [pass, setPass] = useState("")
 
-    const handleSubmit = e => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
         let newUserData = {
             email: email.trim().toLowerCase(),
             password: pass.trim(),
             from: "form"
         }
-        login(newUserData)
+        await loginUser(newUserData)
+        .then(response => {
+            AsyncStorage.setItem('token', response?.data.response.token)
+            dispatch(setCredentials(response?.data.response.user))
+            Alert.alert(`Bienvenido ${data.firstName} ${data.lastName}`)
+            navigation.navigate('Home')
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
 
     async function login(newUserData) { 
         try {
-            let res = await loginUser(newUserData)
-            if (res.data.success) {
-                let data = res.data.response.user
-                dispatch(setCredentials(data))
-                Alert.alert(`Bienvenido ${data.firstName} ${data.lastName}`)
-                // dispatch(setMessage({
-                //     message: `Bienvenido ${data.firstName} ${data.lastName}`,
-                //     success: res.data?.success
-                // }))
-                // dispatch(reload())
-                AsyncStorage.setItem('token', res.data.response.token)
-                setTimeout(() => {
-                    navigation.navigate("Inicio")
-                }, 1500);
+            // let res = await loginUser(newUserData)
+            // if (res.data.success) {
+            //     let data = res.data.response.user
+            //     dispatch(setCredentials(data))
+            //     Alert.alert(`Bienvenido ${data.firstName} ${data.lastName}`)
+            //     // dispatch(setMessage({
+            //     //     message: `Bienvenido ${data.firstName} ${data.lastName}`,
+            //     //     success: res.data?.success
+            //     // }))
+            //     // dispatch(reload())
+            //     AsyncStorage.setItem('token', res.data.response.token)
+            //     setTimeout(() => {
+            //         navigation.navigate("Inicio")
+            //     }, 1500);
                 
-            }
+            // }
         } catch (error) {
             console.log(error)
         }
